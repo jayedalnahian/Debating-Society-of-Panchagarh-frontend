@@ -5,7 +5,7 @@ import { FaUsers, FaCalendarAlt, FaAward } from "react-icons/fa";
 const HeroSection = () => {
   const cardVariants = {
     animate: {
-      y: [0, -15, 0],
+      y: [0, -10, 0],
       transition: {
         duration: 6,
         repeat: Infinity,
@@ -18,7 +18,7 @@ const HeroSection = () => {
     animate: {
       rotate: [0, 360],
       transition: {
-        duration: 20,
+        duration: 40,
         repeat: Infinity,
         ease: "linear",
       },
@@ -26,47 +26,50 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="bg-dark text-white overflow-hidden relative">
+    <section className="bg-[#0F172A] text-[#F8FAFC] overflow-hidden relative">
       {/* Animated background blobs */}
       <motion.div
-        className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-primary to-accent opacity-20 rounded-full blur-3xl"
+        className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#38BDF8] opacity-20 rounded-full blur-3xl"
         variants={blobVariants}
         animate="animate"
       />
       <motion.div
-        className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-accent to-secondary opacity-15 rounded-full blur-3xl"
+        className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#0EA5E9] opacity-20 rounded-full blur-3xl"
         variants={blobVariants}
         animate="animate"
       />
 
-      <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-6 py-20 md:py-28 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
           <div className="text-center lg:text-left">
-            <h1 className="text-4xl md:text-5xl text-black lg:text-6xl font-bold leading-tight mb-6">
-              Welcome to Panchagarh
-              <br />
-              Debating Society
+            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6 text-[#38BDF8]">
+              Welcome to <br className="hidden md:block" />
+              <span className="bg-gradient-to-r from-[#38BDF8] to-[#0EA5E9] bg-clip-text text-transparent">
+                Panchagarh Debating Society
+              </span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-700 mb-8 max-w-lg mx-auto lg:mx-0">
-              Join students from all over Panchagarh district, participate in debates,
-              improve your public speaking skills, and showcase your talent.
+
+            <p className="text-gray-300 text-lg md:text-xl mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              Empowering young minds through debate, discussion, and dialogue.
+              Join passionate students from all over Panchagarh to sharpen your
+              public speaking and critical thinking skills.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">
               <motion.a
                 href="/register"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-primary text-primary text-teal-600 hover:bg-teal-600 hover:text-black rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                className="px-8 py-4 bg-gradient-to-r from-[#38BDF8] to-[#0EA5E9] text-[#0F172A] font-semibold rounded-full shadow-lg hover:shadow-[#38BDF8]/40 transition-all duration-300"
               >
-                Register Now
+                Join Now
               </motion.a>
               <motion.a
                 href="/events"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 border-2 text-primary text-teal-600 hover:bg-teal-600 hover:text-black border-primary text-primary rounded-full font-semibold hover:bg-primary font-bold transition-all duration-300"
+                className="px-8 py-4 border-2 border-[#38BDF8] text-[#38BDF8] font-semibold rounded-full hover:bg-[#38BDF8] hover:text-[#0F172A] transition-all duration-300"
               >
                 Explore Events
               </motion.a>
@@ -79,27 +82,30 @@ const HeroSection = () => {
             <motion.div
               variants={cardVariants}
               animate="animate"
-              className="absolute top-0 left-10 md:left-20 w-64 bg-white  text-black p-6 rounded-2xl shadow-xl z-30"
+              className="absolute top-0 left-10 md:left-20 w-64 bg-[#1E293B] text-[#F8FAFC] p-6 rounded-2xl shadow-lg border border-[#2A3F5F]"
             >
-              <div className="flex items-center mb-4">
-                <FaUsers className="text-primary mr-2" />
-                <h3 className="font-semibold">Members</h3>
+              <div className="flex items-center mb-3">
+                <FaUsers className="text-[#38BDF8] mr-2 text-lg" />
+                <h3 className="font-semibold">Active Members</h3>
               </div>
-              <p className="text-sm text-gray-600">Over 500 students actively participate</p>
+              <p className="text-gray-400 text-sm">
+                Over <span className="text-[#38BDF8] font-semibold">500+</span>{" "}
+                students engaged in debates and workshops.
+              </p>
             </motion.div>
 
             {/* Events Card */}
             <motion.div
               variants={cardVariants}
               animate="animate"
-              className="absolute top-32 right-10 md:right-20 w-56 bg-white text-black p-6 rounded-2xl shadow-xl z-20"
+              className="absolute top-36 right-10 md:right-24 w-56 bg-[#1E293B] text-[#F8FAFC] p-6 rounded-2xl shadow-lg border border-[#2A3F5F]"
             >
-              <div className="flex items-center mb-4">
-                <FaCalendarAlt className="text-secondary mr-2" />
-                <h3 className="font-semibold">Events</h3>
+              <div className="flex items-center mb-3">
+                <FaCalendarAlt className="text-[#0EA5E9] mr-2 text-lg" />
+                <h3 className="font-semibold">Upcoming Events</h3>
               </div>
-              <p className="text-sm text-gray-600">
-                Regular debate competitions and workshops every month
+              <p className="text-gray-400 text-sm">
+                Monthly debate tournaments and public speaking workshops.
               </p>
             </motion.div>
 
@@ -107,17 +113,18 @@ const HeroSection = () => {
             <motion.div
               variants={cardVariants}
               animate="animate"
-              className="absolute top-64 left-20 md:left-32 w-60 bg-white text-black p-6 rounded-2xl shadow-xl z-10"
+              className="absolute top-72 left-20 md:left-32 w-60 bg-[#1E293B] text-[#F8FAFC] p-6 rounded-2xl shadow-lg border border-[#2A3F5F]"
             >
-              <div className="flex items-center mb-4">
-                <FaAward className="text-accent mr-2" />
+              <div className="flex items-center mb-3">
+                <FaAward className="text-[#38BDF8] mr-2 text-lg" />
                 <h3 className="font-semibold">Achievements</h3>
               </div>
-              <p className="text-sm text-gray-600">
-                Numerous awards and recognitions at district and national level
+              <p className="text-gray-400 text-sm">
+                Multiple awards at district and national-level competitions.
               </p>
             </motion.div>
 
+            {/* Spacer to maintain layout height */}
             <div className="w-80 h-96 opacity-0"></div>
           </div>
         </div>
