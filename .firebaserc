@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "explore-email-password-a-801d9"
-  }
+    "default": "debating-society-of-panchagarh",
+    "new-dsp": "debating-society-of-panchagarh"
+  },
+  "targets": {},
+  "etags": {}
 }

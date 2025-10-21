@@ -25,7 +25,7 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-md" : "bg-grey-200"
+        isScrolled ? "bg-[#132440] shadow-xl" : "bg-[#F7F9FC]"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -38,7 +38,7 @@ const Navbar = () => {
                 onClick={toggleMobileMenu}
                 aria-label="Toggle Menu"
                 className={`focus:outline-none ${
-                  isScrolled ? "text-gray-800" : "text-gray-900"
+                  isScrolled ? "text-white" : "text-[#132440]"
                 }`}
               >
                 <svg
@@ -65,7 +65,7 @@ const Navbar = () => {
             <Link
               to="/"
               className={`ml-4 lg:ml-0 text-xl font-bold transition-colors duration-200 ${
-                isScrolled ? "text-gray-900" : "text-black"
+                isScrolled ? "text-white" : "text-[#132440]"
               }`}
             >
               Panchagarh Debating Society
@@ -83,8 +83,8 @@ const Navbar = () => {
                     isActive
                       ? "text-teal-600 font-extrabold"
                       : isScrolled
-                      ? "text-gray-900 hover:text-teal-600"
-                      : "text-black hover:text-teal-400 font-semibold"
+                      ? "text-white hover:text-[#3B9797]"
+                      : "text-[#132440] hover:text-teal-600 font-semibold"
                   }`
                 }
               >
@@ -97,7 +97,7 @@ const Navbar = () => {
           <div className="hidden lg:block">
             <Link
               to="/register"
-              className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-6 rounded-md transition-colors duration-200"
+              className="bg-gradient-to-r from-[#BF092F] to-[#16476A] hover:from-[#16476A] hover:to-[#3B9797] text-white font-semibold py-2 px-6 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Register
             </Link>
@@ -107,7 +107,7 @@ const Navbar = () => {
           <div className="lg:hidden">
             <Link
               to="/register"
-              className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-md text-sm transition-colors duration-200"
+              className="bg-gradient-to-r from-teal-600 to-[#16476A] hover:from-[#16476A] hover:to-[#3B9797] text-white font-semibold py-2 px-4 rounded-md text-sm transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Register
             </Link>
@@ -118,8 +118,8 @@ const Navbar = () => {
       {/* Mobile menu */}
       {isMobileMenuOpen && (
         <div
-          className={`lg:hidden shadow-lg ${
-            isScrolled ? "bg-white" : "bg-gray-800"
+          className={`lg:hidden shadow-xl ${
+            isScrolled ? "bg-[#132440]" : "bg-[#16476A]"
           }`}
         >
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
@@ -131,10 +131,10 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   `block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
                     isActive
-                      ? "text-teal-600 font-bold bg-teal-100"
+                      ? "text-teal-600 font-bold bg-white/10"
                       : isScrolled
-                      ? "text-gray-900 hover:text-teal-600 hover:bg-teal-50"
-                      : "text-white hover:text-teal-400 hover:bg-gray-700"
+                      ? "text-white hover:text-[#3B9797] hover:bg-white/5"
+                      : "text-white hover:text-teal-600 hover:bg-white/10"
                   }`
                 }
               >
