@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router";
 import HomePage from "../pages/Home/HomePage";
 import AboutPage from "../components/AboutPageComponents/AboutPage";
 import Events from "../components/EventsPageComponents/Events";
+import Members from "../components/MembersPageComponents/Members";
+import Resources from "../components/ResourcesPageComponents/Resources";
 
 import MainLayout from "../layouts/MainLayout";
 
@@ -21,7 +23,15 @@ const router = createBrowserRouter([
       {
         path: "/events",
         element: <Events></Events>
-      }
+      },
+      {
+        path: "/members",
+        element: <Members></Members>
+      },
+      {
+        path: "/resources",
+        element: <Resources></Resources>
+      },
     ],
   },
 ]);
