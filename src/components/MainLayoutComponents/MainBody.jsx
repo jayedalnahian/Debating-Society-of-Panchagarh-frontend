@@ -1,11 +1,11 @@
 import React from 'react';
 
-const PropertyCard = () => {
+const MainBody = () => {
     return (
         <div>
-            
+            this is main body
         </div>
     );
 };
 
-export default PropertyCard;
+export default MainBody;

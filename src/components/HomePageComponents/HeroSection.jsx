@@ -1,71 +1,129 @@
+import React from "react";
 import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
-import { Link } from "react-router";
+import { FaUsers, FaCalendarAlt, FaAward } from "react-icons/fa";
 
-export default function HeroSection() {
+const HeroSection = () => {
+  const cardVariants = {
+    animate: {
+      y: [0, -15, 0],
+      transition: {
+        duration: 6,
+        repeat: Infinity,
+        ease: "easeInOut",
+      },
+    },
+  };
+
+  const blobVariants = {
+    animate: {
+      rotate: [0, 360],
+      transition: {
+        duration: 20,
+        repeat: Infinity,
+        ease: "linear",
+      },
+    },
+  };
+
   return (
-    <section className="relative min-h-screen flex flex-col items-center bg-gradient-to-br from-[#F2EFE7] via-[#9ACBD0] to-[#48A6A7] overflow-hidden">
-      {/* Floating abstract shapes */}
-      <div className="absolute top-10 left-10 w-40 h-40 bg-white/20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-20 right-20 w-60 h-60 bg-[#006A71]/30 rounded-full blur-3xl animate-bounce" />
+    <section className="bg-dark text-white overflow-hidden relative">
+      {/* Animated background blobs */}
+      <motion.div
+        className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-primary to-accent opacity-20 rounded-full blur-3xl"
+        variants={blobVariants}
+        animate="animate"
+      />
+      <motion.div
+        className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-accent to-secondary opacity-15 rounded-full blur-3xl"
+        variants={blobVariants}
+        animate="animate"
+      />
 
-      {/* Hero Content */}
-      <div className="relative z-10 w-full">
-        <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center pt-20">
-          {/* Left Side */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6"
-          >
-            <h1 className="text-5xl lg:text-6xl font-bold text-[#006A71] leading-tight">
-              Find Your Perfect Haven
+      <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="text-center lg:text-left">
+            <h1 className="text-4xl md:text-5xl text-black lg:text-6xl font-bold leading-tight mb-6">
+              Welcome to Panchagarh
+              <br />
+              Debating Society
             </h1>
-            <p className="text-lg text-gray-700 max-w-lg">
-              Discover trusted agents, explore verified listings, and secure your dream home with ease.
+            <p className="text-lg md:text-xl text-gray-700 mb-8 max-w-lg mx-auto lg:mx-0">
+              Join students from all over Panchagarh district, participate in debates,
+              improve your public speaking skills, and showcase your talent.
             </p>
 
-            <div className="flex gap-4">
-              <Link 
-                to="/all-properties" 
-                className="bg-[#48A6A7] text-white px-6 py-3 rounded-2xl text-lg shadow-lg hover:shadow-xl hover:bg-[#379091] transition"
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <motion.a
+                href="/register"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-primary text-primary text-teal-600 hover:bg-teal-600 hover:text-black rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                Explore Properties
-              </Link>
-              <Link 
-                to="/dashboard" 
-                className="border-2 border-[#48A6A7] text-[#006A71] px-6 py-3 rounded-2xl text-lg hover:bg-[#48A6A7]/10 transition"
+                Register Now
+              </motion.a>
+              <motion.a
+                href="/events"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 border-2 text-primary text-teal-600 hover:bg-teal-600 hover:text-black border-primary text-primary rounded-full font-semibold hover:bg-primary font-bold transition-all duration-300"
               >
-                Dashboard
-              </Link>
+                Explore Events
+              </motion.a>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Right Side (Hero Image) */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-            className="relative hidden md:flex w-full h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden rounded-2xl shadow-2xl"
-          >
-            <img
-              src="https://images.unsplash.com/photo-1568605114967-8130f3a36994"
-              alt="Luxury Property"
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
+          {/* Right Content - Floating Cards */}
+          <div className="relative flex justify-center lg:justify-end">
+            {/* Members Card */}
+            <motion.div
+              variants={cardVariants}
+              animate="animate"
+              className="absolute top-0 left-10 md:left-20 w-64 bg-white  text-black p-6 rounded-2xl shadow-xl z-30"
+            >
+              <div className="flex items-center mb-4">
+                <FaUsers className="text-primary mr-2" />
+                <h3 className="font-semibold">Members</h3>
+              </div>
+              <p className="text-sm text-gray-600">Over 500 students actively participate</p>
+            </motion.div>
+
+            {/* Events Card */}
+            <motion.div
+              variants={cardVariants}
+              animate="animate"
+              className="absolute top-32 right-10 md:right-20 w-56 bg-white text-black p-6 rounded-2xl shadow-xl z-20"
+            >
+              <div className="flex items-center mb-4">
+                <FaCalendarAlt className="text-secondary mr-2" />
+                <h3 className="font-semibold">Events</h3>
+              </div>
+              <p className="text-sm text-gray-600">
+                Regular debate competitions and workshops every month
+              </p>
+            </motion.div>
+
+            {/* Achievements Card */}
+            <motion.div
+              variants={cardVariants}
+              animate="animate"
+              className="absolute top-64 left-20 md:left-32 w-60 bg-white text-black p-6 rounded-2xl shadow-xl z-10"
+            >
+              <div className="flex items-center mb-4">
+                <FaAward className="text-accent mr-2" />
+                <h3 className="font-semibold">Achievements</h3>
+              </div>
+              <p className="text-sm text-gray-600">
+                Numerous awards and recognitions at district and national level
+              </p>
+            </motion.div>
+
+            <div className="w-80 h-96 opacity-0"></div>
+          </div>
         </div>
       </div>
-
-      {/* Scroll Down Indicator */}
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20"
-      >
-        <ArrowDown className="w-6 h-6 text-[#006A71]" />
-      </motion.div>
     </section>
   );
-}
+};
+
+export default HeroSection;
