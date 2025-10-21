@@ -86,12 +86,12 @@ const AboutPage = () => {
         >
           {/* Background blobs */}
           <motion.div
-            className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-[#BF092F] to-[#16476A] opacity-20 rounded-full blur-3xl"
+            className="absolute top-1/4 left-1/4 w-96  bg-gradient-to-r from-[#BF092F] to-[#16476A] opacity-20 rounded-full blur-xl"
             animate={{ rotate: 360 }}
             transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
           />
           <motion.div
-            className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-[#3B9797] to-[#BF092F] opacity-15 rounded-full blur-3xl"
+            className="absolute bottom-1/4 right-1/4 w-80 bg-gradient-to-r from-[#3B9797] to-[#BF092F] opacity-15 rounded-full blur-3xl"
             animate={{ rotate: -360 }}
             transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
           />
@@ -113,12 +113,12 @@ const AboutPage = () => {
         <motion.section className="relative py-20 overflow-hidden">
           {/* Background blobs */}
           <motion.div
-            className="absolute top-1/3 left-1/3 w-72 h-72 bg-gradient-to-r from-[#16476A] to-[#3B9797] opacity-15 rounded-full blur-3xl"
+            className="absolute top-1/3 left-1/3 w-72 bg-gradient-to-r from-[#16476A] to-[#3B9797] opacity-15 rounded-full blur-3xl"
             animate={{ rotate: 360 }}
             transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
           />
           <motion.div
-            className="absolute bottom-1/3 right-1/3 w-72 h-72 bg-gradient-to-r from-[#BF092F] to-[#16476A] opacity-20 rounded-full blur-3xl"
+            className="absolute bottom-1/3 right-1/3 w-72 bg-gradient-to-r from-[#BF092F] to-[#16476A] opacity-20 rounded-full blur-3xl"
             animate={{ rotate: -360 }}
             transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
           />
@@ -129,7 +129,7 @@ const AboutPage = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="bg-white/5 backdrop-blur-md p-8 rounded-2xl shadow-lg"
+              className="bg-white/5 backdrop-blur-md p-8 rounded-2xl shadow-lg border"
             >
               <h2 className="text-3xl font-semibold mb-4 text-primary">
                 Our Mission
@@ -146,7 +146,7 @@ const AboutPage = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="bg-white/5 backdrop-blur-md p-8 rounded-2xl shadow-lg"
+              className="bg-white/5 backdrop-blur-md p-8 rounded-2xl shadow-lg border"
             >
               <h2 className="text-3xl font-semibold mb-4 text-accent">
                 Our History

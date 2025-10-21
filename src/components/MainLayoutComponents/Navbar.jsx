@@ -1,15 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const menuItems = [
     { path: "/", label: "Home" },
@@ -23,11 +16,7 @@ const Navbar = () => {
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-[#132440] shadow-xl" : "bg-[#F7F9FC]"
-      }`}
-    >
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#132440] shadow-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo and mobile menu button */}
@@ -37,9 +26,7 @@ const Navbar = () => {
               <button
                 onClick={toggleMobileMenu}
                 aria-label="Toggle Menu"
-                className={`focus:outline-none ${
-                  isScrolled ? "text-white" : "text-[#132440]"
-                }`}
+                className="focus:outline-none text-white"
               >
                 <svg
                   className="h-6 w-6"
@@ -64,9 +51,7 @@ const Navbar = () => {
             {/* Logo */}
             <Link
               to="/"
-              className={`ml-4 lg:ml-0 text-xl font-bold transition-colors duration-200 ${
-                isScrolled ? "text-white" : "text-[#132440]"
-              }`}
+              className="ml-4 lg:ml-0 text-xl font-bold text-white"
             >
               Panchagarh Debating Society
             </Link>
@@ -81,10 +66,8 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   `px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
                     isActive
-                      ? "text-teal-600 font-extrabold"
-                      : isScrolled
-                      ? "text-white hover:text-[#3B9797]"
-                      : "text-[#132440] hover:text-teal-600 font-semibold"
+                      ? "text-teal-400 font-bold"
+                      : "text-white hover:text-teal-400 font-semibold"
                   }`
                 }
               >
@@ -117,11 +100,7 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {isMobileMenuOpen && (
-        <div
-          className={`lg:hidden shadow-xl ${
-            isScrolled ? "bg-[#132440]" : "bg-[#16476A]"
-          }`}
-        >
+        <div className="lg:hidden shadow-xl bg-[#16476A]">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {menuItems.map((item) => (
               <NavLink
@@ -131,10 +110,8 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   `block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
                     isActive
-                      ? "text-teal-600 font-bold bg-white/10"
-                      : isScrolled
-                      ? "text-white hover:text-[#3B9797] hover:bg-white/5"
-                      : "text-white hover:text-teal-600 hover:bg-white/10"
+                      ? "text-teal-400 font-bold bg-white/10"
+                      : "text-white hover:text-teal-400 hover:bg-white/5"
                   }`
                 }
               >
