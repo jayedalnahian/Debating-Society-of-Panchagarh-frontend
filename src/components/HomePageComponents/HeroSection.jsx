@@ -1,8 +1,11 @@
-import React from "react";
+import React, { use } from "react";
 import { motion } from "framer-motion";
 import { FaUsers, FaCalendarAlt, FaAward } from "react-icons/fa";
+import useAuth from "../../CustomHooks/UseAuth";
 
 const HeroSection = () => {
+  const { user } = useAuth();
+
   const floatVariants = {
     animate: {
       y: [0, -15, 0],
@@ -110,20 +113,25 @@ const HeroSection = () => {
           </h1>
 
           <p className="text-gray-300 text-lg md:text-xl mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0">
-            Welcome to the <span className="font-semibold text-[#38BDF8]">Panchagarh Debating Society</span> — a platform
-            for young thinkers to speak, challenge ideas, and lead the next
-            generation of confident communicators.
+            Welcome to the{" "}
+            <span className="font-semibold text-[#38BDF8]">
+              Panchagarh Debating Society
+            </span>{" "}
+            — a platform for young thinkers to speak, challenge ideas, and lead
+            the next generation of confident communicators.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">
-            <motion.a
-              href="/register"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-gradient-to-r from-[#38BDF8] to-[#0EA5E9] text-[#0F172A] font-semibold rounded-full shadow-lg hover:shadow-[#38BDF8]/40 transition-all duration-300 text-center"
-            >
-              Join Now
-            </motion.a>
+            {!user && (
+              <motion.a
+                href="/register"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-gradient-to-r from-[#38BDF8] to-[#0EA5E9] text-[#0F172A] font-semibold rounded-full shadow-lg hover:shadow-[#38BDF8]/40 transition-all duration-300 text-center"
+              >
+                Join Now
+              </motion.a>
+            )}
             <motion.a
               href="/events"
               whileHover={{ scale: 1.05 }}

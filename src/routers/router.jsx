@@ -7,7 +7,10 @@ import Resources from "../components/ResourcesPageComponents/Resources";
 import Contact from "../components/ContactPageComponents/Contact";
 import Login from "../components/LoginPageComponents/Login";
 import MainLayout from "../layouts/MainLayout";
-import Register from './../components/RegisterPageComponents/Register';
+import Register from "./../components/RegisterPageComponents/Register";
+import DashboardLayout from "../AdminDashboard/DashboardLayout/DashboardLayout";
+import DashBoardHome from "../AdminDashboard/DashboardPages/HomePage/DashBoardHome";
+import Overview from "../AdminDashboard/DashboardPages/OverView/Overview";
 
 const router = createBrowserRouter([
   {
@@ -16,35 +19,49 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomePage></HomePage>
+        element: <HomePage></HomePage>,
       },
       {
         path: "/about",
-        element: <AboutPage></AboutPage>
+        element: <AboutPage></AboutPage>,
       },
       {
         path: "/events",
-        element: <Events></Events>
+        element: <Events></Events>,
       },
       {
         path: "/members",
-        element: <Members></Members>
+        element: <Members></Members>,
       },
       {
         path: "/resources",
-        element: <Resources></Resources>
+        element: <Resources></Resources>,
       },
       {
         path: "/contact",
-        element: <Contact></Contact>
+        element: <Contact></Contact>,
       },
       {
         path: "/login",
-        element: <Login></Login>
+        element: <Login></Login>,
       },
       {
         path: "/register",
-        element: <Register></Register>
+        element: <Register></Register>,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout></DashboardLayout>,
+    children: [
+      {
+        path: "/dashboard",
+        element: <DashBoardHome></DashBoardHome>
+      },
+      {
+        path: "/dashboard/overview",
+        element: <Overview></Overview>
       },
     ],
   },

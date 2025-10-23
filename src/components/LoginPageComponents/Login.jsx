@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { FaEnvelope, FaGoogle, FaLock } from "react-icons/fa";
 import useLogin from "../../CustomHooks/useLogin";
 import useAuth from "../../CustomHooks/UseAuth";
@@ -9,7 +9,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { mutate, isLoading } = useLogin();
   const { googleLogin } = useAuth();
-
+const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -22,6 +22,8 @@ const Login = () => {
   const handleGoogleLogin = async () => {
     const response = await googleLogin();
     console.log(response);
+    navigate("/");
+    
     
   };
 
