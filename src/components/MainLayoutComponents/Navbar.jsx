@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router";
 import { FaUserCircle } from "react-icons/fa";
+import useAuth from "../../CustomHooks/UseAuth";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  // 🔒 Temporary state — replace later with Firebase Auth state
-  const user = null; // if logged in -> use { displayName, photoURL, etc. }
+  const { user, logOut } = useAuth();
 
   const menuItems = [
     { path: "/", label: "Home" },
@@ -18,6 +17,16 @@ const Navbar = () => {
   ];
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+ 
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        alert("Logged out successfully!");
+      })
+      .catch((error) => {
+        alert("Logout failed!: " + error.message);
+      });
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#132440]/95 backdrop-blur-md shadow-lg">
@@ -51,11 +60,12 @@ const Navbar = () => {
             </button>
 
             {/* Logo */}
-            <Link
-              to="/"
-              className="flex items-center ml-4 lg:ml-0"
-            >
-              <img className="w-15 h-14" src="https://i.ibb.co.com/Jjb2PqDF/DSP-logo.png" alt="" />
+            <Link to="/" className="flex items-center ml-4 lg:ml-0">
+              <img
+                className="w-15 h-14"
+                src="https://i.ibb.co.com/Jjb2PqDF/DSP-logo.png"
+                alt=""
+              />
             </Link>
           </div>
 
@@ -81,9 +91,8 @@ const Navbar = () => {
           {/* Auth Buttons */}
           <div className="hidden lg:flex items-center space-x-3">
             {user ? (
-              <button className="flex items-center gap-2 text-gray-200 hover:text-white transition-all">
-                <FaUserCircle className="text-xl" />
-                <span>{user.displayName || "Profile"}</span>
+              <button onClick={handleLogout} className="px-5 py-2 rounded-md border-2 border-[#97493b] text-[#3B9797] font-semibold hover:bg-[#3B9797] hover:text-white transition-all duration-300">
+                Logout
               </button>
             ) : (
               <>
@@ -128,9 +137,8 @@ const Navbar = () => {
 
             <div className="flex flex-col items-center gap-3 mt-3 pb-3">
               {user ? (
-                <button className="flex items-center gap-2 text-white">
-                  <FaUserCircle className="text-xl" />
-                  <span>{user.displayName || "Profile"}</span>
+                <button onClick={handleLogout} className="flex items-center gap-2 text-white">
+                  logout
                 </button>
               ) : (
                 <>

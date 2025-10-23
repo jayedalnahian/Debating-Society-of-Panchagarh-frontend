@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
+
 const useAuth = () => {
   const {
     registerUser,
@@ -9,7 +10,7 @@ const useAuth = () => {
     user,
     setUser,
     logOut,
-    loading,
+    loginUser,
     setLoading,
   } = useContext(AuthContext);
 
@@ -20,7 +21,7 @@ const useAuth = () => {
     user,
     setUser,
     logOut,
-    loading,
+    loginUser,
     setLoading,
   };
 };

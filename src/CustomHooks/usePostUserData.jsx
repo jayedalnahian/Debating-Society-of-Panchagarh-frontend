@@ -3,9 +3,11 @@ import React from "react";
 import url from "../baseURL";
 import { useMutation } from "@tanstack/react-query";
 import useAuth from "./UseAuth";
+import { useNavigate } from "react-router";
 
 const usePostUserData = () => {
   const { registerUser } = useAuth();
+  const navigate = useNavigate();
   const { mutate, isLoading } = useMutation({
     mutationFn: async ({ name, email, password }) => {
       const userData = await registerUser(email, password);
@@ -21,6 +23,8 @@ const usePostUserData = () => {
     },
     onSuccess: () => {
       alert("User registered successfully!");
+      navigate("/");
+
     },
     onError: (error) => {
       alert("User is not registered successfully!: " + error.message);

@@ -1,19 +1,28 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router";
-import { FaEnvelope, FaLock } from "react-icons/fa";
+import { FaEnvelope, FaGoogle, FaLock } from "react-icons/fa";
+import useLogin from "../../CustomHooks/useLogin";
 import useAuth from "../../CustomHooks/UseAuth";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const {user, loginUser} = useAuth();
-  console.log(user);
-  
+  const { mutate, isLoading } = useLogin();
+  const { googleLogin } = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // 🔐 Later: Add Firebase Authentication here
-    console.log("Login submitted");
+    const form = e.target;
+    const email = form[0].value;
+    const password = form[1].value;
+    mutate({ email, password });
+    form.reset();
+  };
+
+  const handleGoogleLogin = async () => {
+    const response = await googleLogin();
+    console.log(response);
+    
   };
 
   return (
@@ -73,16 +82,7 @@ const Login = () => {
             </div>
           </div>
 
-          {/* Forgot password */}
-          <div className="text-right">
-            <Link
-              to="/forgot-password"
-              className="text-sm text-[#3B9797] hover:text-[#BF092F] font-medium"
-            >
-              Forgot Password?
-            </Link>
-          </div>
-
+          
           {/* Submit Button */}
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -90,7 +90,7 @@ const Login = () => {
             type="submit"
             className="w-full py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-[#BF092F] to-[#16476A] hover:from-[#16476A] hover:to-[#3B9797] transition-all duration-300 shadow-lg"
           >
-            Login
+            {isLoading ? "Logging in..." : " Login"}
           </motion.button>
         </form>
 
@@ -102,13 +102,13 @@ const Login = () => {
         </div>
 
         {/* Social Login Placeholder */}
-        <div className="text-center">
+        <div onClick={handleGoogleLogin} className="text-center flex justify-center">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="w-full py-3 rounded-lg font-semibold text-[#132440] bg-white hover:bg-gray-200 transition-all duration-300"
+            className="flex justify-center items-center gap-3 p-3 rounded-lg font-semibold text-[#132440] bg-white hover:bg-gray-200 transition-all duration-300"
           >
-            Continue with Google
+            <span><FaGoogle /></span>Continue with Google
           </motion.button>
         </div>
 
