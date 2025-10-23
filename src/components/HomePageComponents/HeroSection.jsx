@@ -3,131 +3,137 @@ import { motion } from "framer-motion";
 import { FaUsers, FaCalendarAlt, FaAward } from "react-icons/fa";
 
 const HeroSection = () => {
-  const cardVariants = {
+  const floatVariants = {
     animate: {
-      y: [0, -10, 0],
+      y: [0, -15, 0],
       transition: {
-        duration: 6,
+        duration: 4,
         repeat: Infinity,
         ease: "easeInOut",
       },
     },
   };
 
-  const blobVariants = {
-    animate: {
-      rotate: [0, 360],
-      transition: {
-        duration: 40,
-        repeat: Infinity,
-        ease: "linear",
-      },
-    },
+  const fadeIn = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
   };
 
   return (
-    <section className="bg-[#0F172A] text-[#F8FAFC] overflow-hidden relative">
-      {/* Animated background blobs */}
+    <section className="relative overflow-hidden bg-gradient-to-br from-[#0F172A] via-[#132440] to-[#0B1120] text-white py-24">
+      {/* Decorative gradient blobs */}
       <motion.div
-        className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#38BDF8] opacity-20 rounded-full blur-3xl"
-        variants={blobVariants}
-        animate="animate"
+        className="absolute top-1/3 -left-20 w-96 h-96 bg-[#38BDF8]/20 blur-3xl rounded-full"
+        animate={{ y: [0, -20, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#0EA5E9] opacity-20 rounded-full blur-3xl"
-        variants={blobVariants}
-        animate="animate"
+        className="absolute bottom-1/3 right-0 w-96 h-96 bg-[#0EA5E9]/20 blur-3xl rounded-full"
+        animate={{ y: [0, 20, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <div className="container mx-auto px-6 py-20 md:py-28 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
-          <div className="text-center lg:text-left">
-            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6 text-[#38BDF8]">
-              Welcome to <br className="hidden md:block" />
-              <span className="bg-gradient-to-r from-[#38BDF8] to-[#0EA5E9] bg-clip-text text-transparent">
-                Panchagarh Debating Society
-              </span>
-            </h1>
+      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 items-center gap-16 relative z-10">
+        {/* LEFT SIDE - Animated Logo & Floating Cards */}
+        <div className="relative flex justify-center lg:justify-start">
+          {/* Main Logo Container */}
+          <div className="relative">
+            <motion.img
+              src="https://i.ibb.co.com/FLvrMddq/DSP-logo.png"
+              alt="Panchagarh Debating Society Logo"
+              className="w-64 md:w-80 drop-shadow-[0_0_25px_rgba(56,189,248,0.3)] relative z-10"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+            />
 
-            <p className="text-gray-300 text-lg md:text-xl mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              Empowering young minds through debate, discussion, and dialogue.
-              Join passionate students from all over Panchagarh to sharpen your
-              public speaking and critical thinking skills.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">
-              <motion.a
-                href="/register"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-[#38BDF8] to-[#0EA5E9] text-[#0F172A] font-semibold rounded-full shadow-lg hover:shadow-[#38BDF8]/40 transition-all duration-300"
-              >
-                Join Now
-              </motion.a>
-              <motion.a
-                href="/events"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 border-2 border-[#38BDF8] text-[#38BDF8] font-semibold rounded-full hover:bg-[#38BDF8] hover:text-[#0F172A] transition-all duration-300"
-              >
-                Explore Events
-              </motion.a>
-            </div>
-          </div>
-
-          {/* Right Content - Floating Cards */}
-          <div className="relative flex justify-center lg:justify-end">
-            {/* Members Card */}
+            {/* Top Right Card */}
             <motion.div
-              variants={cardVariants}
+              variants={floatVariants}
               animate="animate"
-              className="absolute top-0 left-10 md:left-20 w-64 bg-[#1E293B] text-[#F8FAFC] p-6 rounded-2xl shadow-lg border border-[#2A3F5F]"
+              className="absolute -top-4 -right-4 lg:top-46 lg:-right-20 w-48 lg:w-52 bg-[#1E293B]/90 backdrop-blur-sm p-4 rounded-xl border border-[#2A3F5F] shadow-lg z-20"
             >
-              <div className="flex items-center mb-3">
-                <FaUsers className="text-[#38BDF8] mr-2 text-lg" />
-                <h3 className="font-semibold">Active Members</h3>
+              <div className="flex items-center gap-2 mb-1">
+                <FaUsers className="text-[#38BDF8]" size={16} />
+                <h3 className="font-semibold text-sm">Active Members</h3>
               </div>
-              <p className="text-gray-400 text-sm">
-                Over <span className="text-[#38BDF8] font-semibold">500+</span>{" "}
-                students engaged in debates and workshops.
+              <p className="text-gray-300 text-xs">
+                <span className="text-[#38BDF8] font-semibold">500+</span> young
+                debaters from Panchagarh.
               </p>
             </motion.div>
 
-            {/* Events Card */}
+            {/* Bottom Left Card */}
             <motion.div
-              variants={cardVariants}
+              variants={floatVariants}
               animate="animate"
-              className="absolute top-36 right-10 md:right-24 w-56 bg-[#1E293B] text-[#F8FAFC] p-6 rounded-2xl shadow-lg border border-[#2A3F5F]"
+              className="absolute -bottom-4 -left-4 lg:-bottom-6 lg:-left-8 w-48 lg:w-52 bg-[#1E293B]/90 backdrop-blur-sm p-4 rounded-xl border border-[#2A3F5F] shadow-lg z-20"
             >
-              <div className="flex items-center mb-3">
-                <FaCalendarAlt className="text-[#0EA5E9] mr-2 text-lg" />
-                <h3 className="font-semibold">Upcoming Events</h3>
+              <div className="flex items-center gap-2 mb-1">
+                <FaCalendarAlt className="text-[#0EA5E9]" size={16} />
+                <h3 className="font-semibold text-sm">Upcoming Events</h3>
               </div>
-              <p className="text-gray-400 text-sm">
-                Monthly debate tournaments and public speaking workshops.
+              <p className="text-gray-300 text-xs">
+                Monthly debates, workshops & training sessions.
               </p>
             </motion.div>
 
-            {/* Achievements Card */}
+            {/* Bottom Right Card */}
             <motion.div
-              variants={cardVariants}
+              variants={floatVariants}
               animate="animate"
-              className="absolute top-72 left-20 md:left-32 w-60 bg-[#1E293B] text-[#F8FAFC] p-6 rounded-2xl shadow-lg border border-[#2A3F5F]"
+              className="absolute -bottom-8 right-8 lg:bottom-8 lg:right-4 w-48 lg:w-52 bg-[#1E293B]/90 backdrop-blur-sm p-4 rounded-xl border border-[#2A3F5F] shadow-lg z-20"
             >
-              <div className="flex items-center mb-3">
-                <FaAward className="text-[#38BDF8] mr-2 text-lg" />
-                <h3 className="font-semibold">Achievements</h3>
+              <div className="flex items-center gap-2 mb-1">
+                <FaAward className="text-[#38BDF8]" size={16} />
+                <h3 className="font-semibold text-sm">Achievements</h3>
               </div>
-              <p className="text-gray-400 text-sm">
-                Multiple awards at district and national-level competitions.
+              <p className="text-gray-300 text-xs">
+                District & national-level debate champions.
               </p>
             </motion.div>
-
-            {/* Spacer to maintain layout height */}
-            <div className="w-80 h-96 opacity-0"></div>
           </div>
         </div>
+
+        {/* RIGHT SIDE - Text Content */}
+        <motion.div
+          variants={fadeIn}
+          initial="hidden"
+          animate="visible"
+          className="text-center lg:text-left"
+        >
+          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+            Empowering Voices, <br />
+            <span className="bg-gradient-to-r from-[#38BDF8] to-[#0EA5E9] bg-clip-text text-transparent">
+              Inspiring Change
+            </span>
+          </h1>
+
+          <p className="text-gray-300 text-lg md:text-xl mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0">
+            Welcome to the <span className="font-semibold text-[#38BDF8]">Panchagarh Debating Society</span> — a platform
+            for young thinkers to speak, challenge ideas, and lead the next
+            generation of confident communicators.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">
+            <motion.a
+              href="/register"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 bg-gradient-to-r from-[#38BDF8] to-[#0EA5E9] text-[#0F172A] font-semibold rounded-full shadow-lg hover:shadow-[#38BDF8]/40 transition-all duration-300 text-center"
+            >
+              Join Now
+            </motion.a>
+            <motion.a
+              href="/events"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 border-2 border-[#38BDF8] text-[#38BDF8] font-semibold rounded-full hover:bg-[#38BDF8] hover:text-[#0F172A] transition-all duration-300 text-center"
+            >
+              Explore Events
+            </motion.a>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

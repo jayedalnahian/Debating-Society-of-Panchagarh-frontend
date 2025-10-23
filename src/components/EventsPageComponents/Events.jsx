@@ -5,34 +5,15 @@ import { FaCalendarAlt, FaMapMarkerAlt, FaTimes } from "react-icons/fa"; // 👈
 const eventsData = [
   {
     id: 1,
-    title: "District Debate Championship 2025",
-    date: "March 15, 2025",
-    location: "Panchagarh Government Auditorium",
+    title: "Debate session one",
+    date: " October 23, 2025",
+    location: "Panchagarh Government Girls High School",
     description:
-      "A grand annual debate competition where schools and colleges from all over Panchagarh compete. This event encourages critical thinking and confidence among young debaters.",
+      "The first session of the annual debate series focuses on “Techniques and Preparation Methods to Win a Debate.” Participants will learn essential debating strategies, speech structuring, rebuttal techniques, and confidence-building exercises. This interactive session aims to strengthen critical thinking and equip young debaters with the skills needed to perform successfully in future competitions.",
     image:
-      "https://images.unsplash.com/photo-1551836022-4c4c79ecde51?auto=format&fit=crop&w=800&q=80",
+      "https://i.ibb.co.com/1YFNQg7B/126055.png",
   },
-  {
-    id: 2,
-    title: "Public Speaking Workshop",
-    date: "April 5, 2025",
-    location: "Panchagarh Polytechnic Institute",
-    description:
-      "An intensive workshop to enhance public speaking, articulation, and stage presence — led by experienced mentors and past debate champions.",
-    image:
-      "https://images.unsplash.com/photo-1584697964351-c8c3e09f5f49?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: 3,
-    title: "Inter-College Friendly Debate",
-    date: "May 20, 2025",
-    location: "Panchagarh Town Hall",
-    description:
-      "A friendly competition between local colleges to promote collaboration and learning. Topics are focused on youth development and global awareness.",
-    image:
-      "https://images.unsplash.com/photo-1515165562835-c4c7b05b0a70?auto=format&fit=crop&w=800&q=80",
-  },
+  
 ];
 
 const Events = () => {
@@ -65,7 +46,7 @@ const Events = () => {
             <img
               src={event.image}
               alt={event.title}
-              className="w-full h-48 object-cover"
+              className="w-full "
             />
             <div className="p-6 space-y-3">
               <h2 className="text-2xl font-semibold text-primary">

@@ -1,12 +1,34 @@
 import { motion } from "framer-motion";
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 import { Link } from "react-router";
+import useAuth from "../../CustomHooks/UseAuth";
+import usePostUserData from "../../CustomHooks/usePostUserData";
 
 const Register = () => {
+  
+  const { mutate, isLoading} = usePostUserData();
+  
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form[0].value;
+    const email = form[1].value;
+    const password = form[2].value;
+    const confirmPassword = form[3].value;
+    console.log(name, email, password, confirmPassword);
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    } else {
+        mutate({name, email, password});
+        form.reset();
+    }
+  };
+
   return (
-    <section
-      className="min-h-screen bg-gradient-to-br from-teal-900 via-gray-900 to-black text-white flex items-center justify-center px-4 py-12"
-    >
+    <section className="min-h-screen bg-gradient-to-br from-teal-900 via-gray-900 to-black text-white flex items-center justify-center px-4 py-12">
       <motion.div
         className="bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-2xl max-w-md w-full border border-white/20"
         initial={{ opacity: 0, y: 40 }}
@@ -17,7 +39,7 @@ const Register = () => {
           Create an Account
         </h2>
 
-        <form className="space-y-5">
+        <form className="space-y-5" onSubmit={handleSubmit}>
           {/* Name */}
           <div>
             <label className="block mb-2 text-sm font-medium text-gray-300">
@@ -89,7 +111,7 @@ const Register = () => {
             type="submit"
             className="w-full bg-teal-500 hover:bg-teal-600 text-white py-2 rounded-lg font-semibold transition"
           >
-            Register
+            {isLoading ? "Registering..." : " Register"}
           </motion.button>
         </form>
 

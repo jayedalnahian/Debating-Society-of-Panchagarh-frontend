@@ -53,9 +53,9 @@ const Navbar = () => {
             {/* Logo */}
             <Link
               to="/"
-              className="ml-3 text-lg sm:text-xl font-bold text-white tracking-wide"
+              className="flex items-center ml-4 lg:ml-0"
             >
-              Panchagarh Debating Society
+              <img className="w-15 h-14" src="https://i.ibb.co.com/Jjb2PqDF/DSP-logo.png" alt="" />
             </Link>
           </div>
 

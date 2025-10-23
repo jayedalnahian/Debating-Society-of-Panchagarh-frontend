@@ -1,7 +1,7 @@
 {
   "projects": {
-    "default": "debating-society-of-panchagarh",
-    "new-dsp": "debating-society-of-panchagarh"
+    "default": "panchagarhds",
+    "new-dsp": "pds"
   },
   "targets": {},
   "etags": {}

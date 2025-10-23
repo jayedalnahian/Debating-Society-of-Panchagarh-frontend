@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router";
 import { FaEnvelope, FaLock } from "react-icons/fa";
+import useAuth from "../../CustomHooks/UseAuth";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const {user, loginUser} = useAuth();
+  console.log(user);
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();

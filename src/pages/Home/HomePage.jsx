@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import HeroSection from '../../components/HomePageComponents/HeroSection';
-
-
 
 const HomePage = () => {
     return (
         <div>
-           <HeroSection></HeroSection>
+            <HeroSection></HeroSection>
         </div>
     );
 };
