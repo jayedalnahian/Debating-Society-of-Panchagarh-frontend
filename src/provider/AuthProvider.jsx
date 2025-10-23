@@ -10,17 +10,17 @@ const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
 
-    const [loading, setLoading] = useState(true);
+    const [userLoading, setUserLoading] = useState(true);
 
 
 
     const registerUser = (email, password) => {
-        setLoading(true);
+        setUserLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     const loginUser = (email, password) => {
-        setLoading(true);
+        setUserLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
 
@@ -38,7 +38,7 @@ const AuthProvider = ({ children }) => {
             } else {
                 setUser(null);
             }
-            setLoading(false);
+            setUserLoading(false);
         });
         return () => unSubscribe();
     }, []);
@@ -46,7 +46,7 @@ const AuthProvider = ({ children }) => {
 
 
     const logOut = () => {
-        setLoading(true);
+        setUserLoading(true);
         return signOut(auth)
     };
 
@@ -59,8 +59,8 @@ const AuthProvider = ({ children }) => {
         user,
         setUser,
         logOut,
-        loading,
-        setLoading
+        loading: userLoading,
+        setLoading: setUserLoading
     }
 
     return (

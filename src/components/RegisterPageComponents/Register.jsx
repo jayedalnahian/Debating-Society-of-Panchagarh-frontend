@@ -7,6 +7,7 @@ import usePostUserData from "../../CustomHooks/usePostUserData";
 const Register = () => {
   
   const { mutate, isLoading} = usePostUserData();
+  const { userLoading } = useAuth();
   
 
   const handleSubmit = async (e) => {
@@ -16,7 +17,6 @@ const Register = () => {
     const email = form[1].value;
     const password = form[2].value;
     const confirmPassword = form[3].value;
-    console.log(name, email, password, confirmPassword);
 
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
@@ -111,7 +111,7 @@ const Register = () => {
             type="submit"
             className="w-full bg-teal-500 hover:bg-teal-600 text-white py-2 rounded-lg font-semibold transition"
           >
-            {isLoading ? "Registering..." : " Register"}
+            {isLoading && userLoading ? "Registering..." : " Register"}
           </motion.button>
         </form>
 

@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
-
 const useAuth = () => {
   const {
     registerUser,
-    loginUser,
+    userLoading,
     googleLogin,
     user,
     setUser,
@@ -14,10 +13,9 @@ const useAuth = () => {
     setLoading,
   } = useContext(AuthContext);
 
-
   return {
     registerUser,
-    loginUser,
+    userLoading,
     googleLogin,
     user,
     setUser,
