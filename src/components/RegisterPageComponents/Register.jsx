@@ -17,12 +17,13 @@ const Register = () => {
     const email = form[1].value;
     const password = form[2].value;
     const confirmPassword = form[3].value;
+    const joinDate = new Date();
 
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
     } else {
-        mutate({name, email, password});
+        mutate({name, email, password, joinDate});
         form.reset();
     }
   };

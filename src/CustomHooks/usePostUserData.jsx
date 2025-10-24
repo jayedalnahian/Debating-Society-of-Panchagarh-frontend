@@ -9,15 +9,19 @@ const usePostUserData = () => {
   const { registerUser } = useAuth();
   const navigate = useNavigate();
   const { mutate, isLoading } = useMutation({
-    mutationFn: async ({ name, email, password }) => {
+    mutationFn: async ({ name, email, password, joinDate}) => {
       const userData = await registerUser(email, password);
       if (!userData) {
         alert("Registration failed during authentication!");
         return;
       }
+
+      const role = "regular user";
       const response = await axios.post(`${url}users`, {
         name,
         email,
+        role,
+        joinDate
       });
       return response.data;
     },
