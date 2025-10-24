@@ -1,8 +1,9 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import url from '../baseURL';
 
 const useGetAllEvents = () => {
+    const queryClient = useQueryClient();
     const {data, isLoading, error} = useQuery({
         queryKey: ['events'],
         queryFn: async () => {
@@ -10,6 +11,7 @@ const useGetAllEvents = () => {
             return response.data;
         },
         onSuccess: () => {
+            queryClient.invalidateQueries(["events"]);
             console.log('Events fetched successfully!');
         },
         onError: (error) => {
