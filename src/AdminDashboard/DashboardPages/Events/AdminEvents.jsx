@@ -1,39 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
-import { motion, AnimatePresence} from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import useAddEvent from "../../../CustomHooks/useAddEvent";
+import useGetAllEvents from "../../../CustomHooks/useGetAllEvents";
+import Loading from "../../../components/LoadingPage/Loading";
 
 const AdminEvents = () => {
-  const { mutate, isLoading } = useAddEvent();
-  const [events, setEvents] = useState([
-    {
-      id: 1,
-      title: "Inter-District Debate Fest",
-      date: "2025-10-15",
-      location: "Panchagarh Govt. College",
-      participants: 12,
-    },
-    {
-      id: 2,
-      title: "National Youth Debate",
-      date: "2025-09-20",
-      location: "Dhaka University",
-      participants: 8,
-    },
-    {
-      id: 3,
-      title: "Public Speaking Workshop",
-      date: "2025-08-12",
-      location: "PDS Auditorium",
-      participants: 20,
-    },
-  ]);
+  const { mutate } = useAddEvent();
+  const { data, isLoading } = useGetAllEvents();
+  console.log(data);
 
+  const [events, setEvents] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  
+
+  useEffect(() => {
+    if (data) {
+      setEvents(data);
+    }
+  }, [data]);
+
   const handleAddEvent = (e) => {
     e.preventDefault();
-    const form = e.target; 
+    const form = e.target;
     const eventData = {
       title: form.title.value,
       date: form.date.value,
@@ -47,10 +35,13 @@ const AdminEvents = () => {
     form.reset();
   };
 
-
   const handleDelete = (id) => {
     setEvents(events.filter((e) => e.id !== id));
   };
+
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
 
   return (
     <div className="p-6 bg-[#F8F9FA] min-h-screen">
@@ -80,7 +71,7 @@ const AdminEvents = () => {
           <tbody>
             {events.map((event, i) => (
               <motion.tr
-                key={event.id}
+                key={event._id}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
@@ -162,6 +153,7 @@ const AdminEvents = () => {
               <div className="flex justify-end gap-3 mt-5">
                 <button
                   onClick={() => setShowModal(false)}
+                  type="button"
                   className="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100"
                 >
                   Cancel
@@ -170,7 +162,7 @@ const AdminEvents = () => {
                   type="submit"
                   className="px-4 py-2 rounded-lg bg-[#27AE60] text-white hover:bg-[#1f8c4c]"
                 >
-                  Add
+                  Add Event
                 </button>
               </div>
             </motion.form>
