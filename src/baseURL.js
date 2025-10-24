@@ -1,3 +1,3 @@
-const url = `"http://localhost:3000/" || "http://localhost:3000/"`;
-// http://localhost:3000
+const url = "https://dsp-server.vercel.app/"
+// https://dsp-server.vercel.app/
 export default url;

@@ -11,6 +11,10 @@ import Register from "./../components/RegisterPageComponents/Register";
 import DashboardLayout from "../AdminDashboard/DashboardLayout/DashboardLayout";
 import DashBoardHome from "../AdminDashboard/DashboardPages/HomePage/DashBoardHome";
 import Overview from "../AdminDashboard/DashboardPages/OverView/Overview";
+import AdminEvents from "../AdminDashboard/DashboardPages/Events/AdminEvents";
+import AdminMembers from "../AdminDashboard/DashboardPages/Members/AdminMembers";
+import Announcements from "../AdminDashboard/DashboardPages/Announcements/Announcements";
+import Gallery from "../AdminDashboard/DashboardPages/Gallery/Gallery";
 
 const router = createBrowserRouter([
   {
@@ -62,6 +66,22 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/overview",
         element: <Overview></Overview>
+      },
+      {
+        path: "/dashboard/events",
+        element: <AdminEvents></AdminEvents>
+      },
+      {
+        path: "/dashboard/members",
+        element: <AdminMembers></AdminMembers>
+      },
+      {
+        path: "/dashboard/announcements",
+        element: <Announcements></Announcements>
+      },
+      {
+        path: "/dashboard/gallery",
+        element: <Gallery></Gallery>
       },
     ],
   },
