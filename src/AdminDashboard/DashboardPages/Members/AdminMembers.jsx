@@ -184,6 +184,9 @@ const AdminMembers = () => {
                   <option value="publication-secretary">
                     Publication Secretary
                   </option>
+                  <option value="debater">
+                    Debater
+                  </option>
                   <option value="publicity-secretary">
                     Publicity Secretary
                   </option>
