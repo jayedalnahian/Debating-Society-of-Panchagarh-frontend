@@ -3,7 +3,7 @@ import { NavLink } from "react-router";
 import { FaBell, FaUserCircle } from "react-icons/fa";
 import { MdMenu, MdClose } from "react-icons/md";
 
-const DashboardNavbar = ({ toggleSidebar }) => {
+const DashboardNavbar = ( ) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleToggleMenu = () => {
@@ -24,11 +24,11 @@ const DashboardNavbar = ({ toggleSidebar }) => {
         {/* Center - Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6">
           {[
-            { path: "/dashboard/overview", label: "Overview" },
+            { path: "/dashboard", label: "Overview" },
             { path: "/dashboard/events", label: "Events" },
             { path: "/dashboard/members", label: "Members" },
             { path: "/dashboard/announcements", label: "Announcements" },
-            { path: "/dashboard/gallery", label: "Gallery" },
+            
           ].map((link) => (
             <NavLink
               key={link.path}
@@ -76,7 +76,7 @@ const DashboardNavbar = ({ toggleSidebar }) => {
             { path: "/dashboard/events", label: "Events" },
             { path: "/dashboard/members", label: "Members" },
             { path: "/dashboard/announcements", label: "Announcements" },
-            { path: "/dashboard/gallery", label: "Gallery" },
+           
           ].map((link) => (
             <NavLink
               key={link.path}

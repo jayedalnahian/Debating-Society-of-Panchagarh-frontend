@@ -52,6 +52,11 @@ const AuthProvider = ({ children }) => {
 
 
 
+
+    
+
+
+
     const userInformation = {
         registerUser,
         loginUser,

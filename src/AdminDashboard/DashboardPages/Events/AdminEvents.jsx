@@ -40,13 +40,13 @@ const AdminEvents = () => {
   };
 
   // 🔴 Delete Event
-  const handleDelete = async (id) => {
+  const handleDelete =  (id) => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this event?"
     );
     if (!confirmDelete) return;
 
-    await deleteEvent(id);
+     deleteEvent(id);
     setEvents(events.filter((e) => e._id !== id));
   };
 

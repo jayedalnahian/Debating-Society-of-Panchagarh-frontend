@@ -14,7 +14,7 @@ import Overview from "../AdminDashboard/DashboardPages/OverView/Overview";
 import AdminEvents from "../AdminDashboard/DashboardPages/Events/AdminEvents";
 import AdminMembers from "../AdminDashboard/DashboardPages/Members/AdminMembers";
 import Announcements from "../AdminDashboard/DashboardPages/Announcements/Announcements";
-import Gallery from "../AdminDashboard/DashboardPages/Gallery/Gallery";
+
 
 const router = createBrowserRouter([
   {
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
     children: [
       
       {
-        path: "/dashboard",
+        index: true,
         element: <Overview></Overview>
       },
       {
@@ -75,10 +75,6 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/announcements",
         element: <Announcements></Announcements>
-      },
-      {
-        path: "/dashboard/gallery",
-        element: <Gallery></Gallery>
       },
     ],
   },

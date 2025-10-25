@@ -7,6 +7,7 @@ const useAuth = () => {
     registerUser,
     userLoading,
     googleLogin,
+
     user,
     setUser,
     logOut,
@@ -17,6 +18,7 @@ const useAuth = () => {
   return {
     registerUser,
     userLoading,
+ 
     googleLogin,
     user,
     setUser,
