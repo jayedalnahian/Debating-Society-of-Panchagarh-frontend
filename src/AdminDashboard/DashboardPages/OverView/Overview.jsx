@@ -10,7 +10,7 @@ const Overview = () => {
   const { data, isLoading } = useGetOverview();
   const {data: events, isLoading: eventsLoading} = useGetAllEvents();
   const {data: allUsers, isLoading: usersLoading} = useGetAllUsers();
-  console.log(allUsers);
+
 
   if (isLoading || eventsLoading || usersLoading) {
     return <Loading></Loading>;
@@ -26,13 +26,13 @@ const Overview = () => {
     },
     {
       title: "Total Events",
-      value: data?.totalEvents,
+      value: data?.totalEvents - 1,
       icon: <FaCalendarAlt />,
       color: "#E67E22",
     },
     {
       title: "Announcements",
-      value: data?.totalAnnouncements,
+      value: data?.totalAnnouncements - 1,
       icon: <FaBullhorn />,
       color: "#2980B9",
     },

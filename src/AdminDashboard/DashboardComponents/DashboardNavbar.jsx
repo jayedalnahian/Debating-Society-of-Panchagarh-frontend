@@ -72,7 +72,7 @@ const DashboardNavbar = ( ) => {
       {isMobileMenuOpen && (
         <div className="md:hidden flex flex-col bg-[#34495E] border-t border-[#E67E22]/30 px-4 py-3 space-y-3">
           {[
-            { path: "/dashboard/overview", label: "Overview" },
+            { path: "/dashboard", label: "Overview" },
             { path: "/dashboard/events", label: "Events" },
             { path: "/dashboard/members", label: "Members" },
             { path: "/dashboard/announcements", label: "Announcements" },
