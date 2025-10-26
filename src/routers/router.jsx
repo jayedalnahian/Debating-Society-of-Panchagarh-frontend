@@ -14,6 +14,7 @@ import Overview from "../AdminDashboard/DashboardPages/OverView/Overview";
 import AdminEvents from "../AdminDashboard/DashboardPages/Events/AdminEvents";
 import AdminMembers from "../AdminDashboard/DashboardPages/Members/AdminMembers";
 import Announcements from "../AdminDashboard/DashboardPages/Announcements/Announcements";
+import PrivateProtectedRoute from "../ProtectedRoutes/PrivateProtectedRoute";
 
 
 const router = createBrowserRouter([
@@ -57,7 +58,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: <PrivateProtectedRoute><DashboardLayout></DashboardLayout></PrivateProtectedRoute>,
     children: [
       
       {

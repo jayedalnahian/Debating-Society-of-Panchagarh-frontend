@@ -20,8 +20,9 @@ const navigate = useNavigate();
   };
 
   const handleGoogleLogin = async () => {
-    const response = await googleLogin();
-    console.log(response);
+    await googleLogin();
+    alert("User logged in successfully!");
+  
     navigate("/");
     
     

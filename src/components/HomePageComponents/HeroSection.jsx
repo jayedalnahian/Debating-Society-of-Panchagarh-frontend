@@ -6,6 +6,9 @@ import useAuth from "../../CustomHooks/UseAuth";
 const HeroSection = () => {
   const { user } = useAuth();
 
+  
+  
+
   const floatVariants = {
     animate: {
       y: [0, -15, 0],

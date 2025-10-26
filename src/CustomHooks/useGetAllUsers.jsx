@@ -13,14 +13,14 @@ const useGetAllUsers = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["users"]);
-      console.log("Users fetched successfully!");
+    
     },
     onError: (error) => {
       alert(`Error: ${error.message}`);
     },
   });
 
-  console.log(data);
+  
   
 
   return { data, isLoading };

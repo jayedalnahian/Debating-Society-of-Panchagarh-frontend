@@ -48,7 +48,6 @@ const AdminMembers = () => {
 
   const handleUpdateSubmit = (e) => {
     e.preventDefault();
-    console.log("Updated member data:", editForm);
     editUserData(editForm);
 
     setIsEditModalOpen(false);

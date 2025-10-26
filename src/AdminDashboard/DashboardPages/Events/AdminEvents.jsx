@@ -68,7 +68,7 @@ const AdminEvents = () => {
       description: form.description.value,
     };
 
-    console.log(updateEvent);
+
 
     await updateEvent({ id: selectedEvent._id, updatedEvent });
     setShowEditModal(false);

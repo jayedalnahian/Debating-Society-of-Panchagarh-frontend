@@ -12,7 +12,7 @@ const useGetAllEvents = () => {
         },
         onSuccess: () => {
             queryClient.invalidateQueries(["events"]);
-            console.log('Events fetched successfully!');
+            
         },
         onError: (error) => {
             alert(`Error: ${error.message}`);
